@@ -1,0 +1,1 @@
+export type events = "guildMemberRemove" | "guildMemberAdd" | "guildMemberUpdate" | "messageDelete" | "messageUpdate" | "messageDeleteBulk" | "memberBanned" | "memberKicked"

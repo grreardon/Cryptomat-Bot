@@ -1,0 +1,33 @@
+{
+  "name": "cryptomat-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "_moduleAliases": {
+    "@cryptomat/bot": "./dist/bot",
+    "@cryptomat/lib": "./dist/lib",
+    "@cryptomat/config": "./dist/config"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Cryptomat/bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Cryptomat/bot/issues"
+  },
+  "homepage": "https://github.com/The-Cryptomat/bot#readme",
+  "dependencies": {
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "github:FireDiscordBot/discord.js",
+    "dotenv": "^10.0.0",
+    "module-alias": "^2.2.2",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.12"
+  }
+}

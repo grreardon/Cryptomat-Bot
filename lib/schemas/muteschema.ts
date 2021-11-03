@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose"
 
-export const guildSchema = new Schema(
+export const muteSchema = new Schema(
   {
     _id: { required: true, type: String },
   },
@@ -9,3 +9,6 @@ export const guildSchema = new Schema(
     versionKey: false,
   }
 )
+
+
+

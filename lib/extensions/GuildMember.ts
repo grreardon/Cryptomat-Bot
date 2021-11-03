@@ -51,6 +51,15 @@ export default class CryptomatGuildMember extends GuildMember {
             }
         })
     }
+
+    async mute() {
+
+    }
+
+    async unmute() {
+
+    }
+    
     isModeratable() {
         return !this.permissions.has("BAN_MEMBERS") && !this.roles.cache.has((this.guild as CryptomatGuild).settings.modRole)
     }

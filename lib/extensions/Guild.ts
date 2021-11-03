@@ -23,6 +23,7 @@ export default class CryptomatGuild extends Guild {
 
 
         this.mutes = new Map();
+        this.initMutes();
     }
 
     logMessage(type: 0 | 1, event: events, data: Array<any>) {
@@ -61,7 +62,11 @@ export default class CryptomatGuild extends Guild {
                 break;
             }
         }
-   
+        
+    }
+    async initMutes() {
+        const values = await (this.client as Cryptomat).database.getSchema("mutes");
+       values.forEach(value => this.mutes.set(value._id, value))
     }
 }
 

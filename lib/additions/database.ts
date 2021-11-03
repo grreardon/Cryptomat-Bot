@@ -1,29 +1,35 @@
-import { ConnectOptions, Mongoose, MongooseOptions } from "mongoose"
+import { ConnectOptions, Model, Mongoose, MongooseOptions, Schema } from "mongoose"
 import { guildSchema } from "../schemas/guildschema"
+import { muteSchema } from "../schemas/muteschema"
 import Schemas from "../types/schema"
 
 const schemas = {
-    guild: guildSchema,
-
+    guilds: guildSchema,
+    mutes: muteSchema
 }
+
 export default class Database {
     db: Mongoose
     constructor(options?: MongooseOptions, ) {
         this.db = new Mongoose(options)
-
     }
 
     async init(uri: string, options?: ConnectOptions) {
         this.db.connect(uri, options)
         .then(() => console.log("Logged into database."))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
+
+        for(let x in schemas) {
+            //@ts-ignore
+             const model = schemas[x];
+             this.db.model(x, model, x)
+        }
     }
+
 
     async updateValue(id: string, value: any, schema: Schemas) {
         try {
-        const schem = schemas[schema]
-
-        await schem.updateOne({
+        await this.db.models[schema].updateOne({
             _id: id
         }, {
             $set: value
@@ -40,8 +46,12 @@ export default class Database {
     }
 
     async getModel(id: string, schema: Schemas) {
-        console.log("heyo!")
-        const data = await guildSchema.find({_id: id})
-        console.log(`Data: ${data}`)
+        return await this.db.models[schema].find({_id: id}).lean()
     }
+
+    async getSchema(schema: Schemas) {
+        return await this.db.models[schema].find().lean()
+    }
+
+
 }

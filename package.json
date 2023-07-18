@@ -28,6 +28,6 @@
     "dotenv": "^10.0.0",
     "module-alias": "^2.2.2",
     "moment": "^2.29.1",
-    "mongoose": "^6.0.12"
+    "mongoose": "^6.11.3"
   }
 }
